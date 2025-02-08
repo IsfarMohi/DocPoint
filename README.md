@@ -15,7 +15,7 @@ Make sure you have **Python 3.12.8** installed. If not, download it from [python
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-repo.git
-   cd your-repo/backend/python
+   cd ./backend/python
    ```
 
 2. Create and activate a virtual environment:
@@ -32,7 +32,7 @@ Make sure you have **Python 3.12.8** installed. If not, download it from [python
 
 4. Run the application:
    ```bash
-   python main.py
+   python app.py
    ```
 
 ---
@@ -45,7 +45,7 @@ Make sure you have **Flutter** installed. Follow the official guide: [flutter.de
 ### Installation
 1. Navigate to the Flutter project:
    ```bash
-   cd your-repo/frontend/flutter
+   cd ./frontend/flutter
    ```
 
 2. Install dependencies:
@@ -57,6 +57,55 @@ Make sure you have **Flutter** installed. Follow the official guide: [flutter.de
    ```bash
    flutter run
    ```
+
+---
+
+## GitHub Remote Commands
+
+### Cloning the repository
+```bash
+git clone https://github.com/your-repo.git
+```
+
+### Checking repository status
+```bash
+git status
+```
+
+### Adding and committing changes
+```bash
+git add .
+git commit -m "Your commit message"
+```
+
+### Pushing changes to GitHub
+```bash
+git push origin main
+```
+
+### Pulling latest changes
+```bash
+git pull origin main
+```
+
+---
+
+## Project Folder Structure
+```
+Docpoint/
+    - backend/
+    - frontend/
+```
+
+### Debugging and Updating
+- **Backend:** Navigate to `Docpoint/backend/python`
+  ```bash
+  cd Docpoint/backend/python
+  ```
+- **Frontend:** Navigate to `Docpoint/frontend/flutter/docpoint`
+  ```bash
+  cd Docpoint/frontend/flutter/docpoint
+  ```
 
 ---
 
