@@ -9,7 +9,7 @@ This project is built using **Python** for the backend and **Flutter** for the f
 ## Backend - Python Setup
 
 ### Prerequisites
-Make sure you have **Python 3.x** installed. If not, download it from [python.org](https://www.python.org/).
+Make sure you have **Python 3.12.8** installed. If not, download it from [python.org](https://www.python.org/).
 
 ### Installation
 1. Clone the repository:
