@@ -13,20 +13,14 @@ class _MyLoginState extends State<MyLogin> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/login.png'), fit: BoxFit.cover),
+            image: AssetImage('assets/login1.jpg'), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(
           children: [
             Container(),
-            Container(
-              padding: EdgeInsets.only(left: 35, top: 130),
-              child: Text(
-                'Welcome\nBack',
-                style: TextStyle(color: Colors.white, fontSize: 33),
-              ),
-            ),
+            
             SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
@@ -43,7 +37,7 @@ class _MyLoginState extends State<MyLogin> {
                             decoration: InputDecoration(
                                 fillColor: Colors.grey.shade100,
                                 filled: true,
-                                hintText: "Email",
+                                hintText: "Mobile no",
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 )),
@@ -51,20 +45,7 @@ class _MyLoginState extends State<MyLogin> {
                           SizedBox(
                             height: 30,
                           ),
-                          TextField(
-                            style: TextStyle(),
-                            obscureText: true,
-                            decoration: InputDecoration(
-                                fillColor: Colors.grey.shade100,
-                                filled: true,
-                                hintText: "Password",
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                )),
-                          ),
-                          SizedBox(
-                            height: 40,
-                          ),
+                         
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -78,7 +59,9 @@ class _MyLoginState extends State<MyLogin> {
                                 backgroundColor: Color(0xff4c505b),
                                 child: IconButton(
                                     color: Colors.white,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, 'register');
+                                    },
                                     icon: Icon(
                                       Icons.arrow_forward,
                                     )),
@@ -88,35 +71,7 @@ class _MyLoginState extends State<MyLogin> {
                           SizedBox(
                             height: 40,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pushNamed(context, 'register');
-                                },
-                                style: ButtonStyle(),
-                                child: Text(
-                                  'Sign Up',
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xff4c505b),
-                                      fontSize: 18),
-                                ),
-                              ),
-                              TextButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Forgot Password',
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Color(0xff4c505b),
-                                      fontSize: 18,
-                                    ),
-                                  )),
-                            ],
-                          )
+                          
                         ],
                       ),
                     )
