@@ -14,7 +14,7 @@ Make sure you have **Python 3.12.8** installed. If not, download it from [python
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo.git
+   git clone https://github.com/IsfarMohi/DocPoint.git
    cd ./backend/python
    ```
 
@@ -64,7 +64,7 @@ Make sure you have **Flutter** installed. Follow the official guide: [flutter.de
 
 ### Cloning the repository
 ```bash
-git clone https://github.com/your-repo.git
+git clone https://github.com/IsfarMohi/DocPoint.git
 ```
 
 ### Checking repository status
@@ -100,11 +100,11 @@ Docpoint/
 ### Debugging and Updating
 - **Backend:** Navigate to `Docpoint/backend/python`
   ```bash
-  cd Docpoint/backend/python
+  cd ./backend/python
   ```
 - **Frontend:** Navigate to `Docpoint/frontend/flutter/docpoint`
   ```bash
-  cd Docpoint/frontend/flutter/docpoint
+  cd ./frontend/flutter/docpoint
   ```
 
 ---
