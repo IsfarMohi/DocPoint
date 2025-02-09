@@ -9,7 +9,7 @@ class ApiService {
 
   Future<bool> sendMobileNumber(String mobileNumber) async {
     try {
-      var url = Uri.parse('$baseUrl/save_user');
+      var url = Uri.parse(baseUrl);
       var response = await http.post(
         url,
         headers: {"Content-Type": "application/json"},
@@ -19,11 +19,9 @@ class ApiService {
       if (response.statusCode == 200) {
         return true; // Success
       } else {
-        print('Error: ${response.body}');
         return false; // Failure
       }
     } catch (e) {
-      print('Error occurred: $e');
       return false; // Failure
     }
   }

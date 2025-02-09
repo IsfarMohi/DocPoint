@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:loginuicolors/login.dart';
-import 'package:loginuicolors/register.dart';
+import 'package:loginuicolors/routes/login.dart';
+import 'package:loginuicolors/routes/otp.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: MyLogin(),
+    home: const MyLogin(),
     routes: {
-      'register': (context) => MyRegister(),
-      'login': (context) => MyLogin(),
+      'otp': (context) => const Myotp(),
+      'login': (context) => const MyLogin(),
     },
   ));
 }

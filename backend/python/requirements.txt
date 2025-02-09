@@ -1,5 +1,7 @@
 flask
 supabase
 flask_cors
-#http file shows in error guid terminal vscode
+httpx[http2]
 python-dotenv
+pyautogui
+pywhatkit
