@@ -2,3 +2,4 @@ flask
 supabase
 flask_cors
 #http file shows in error guid terminal vscode
+python-dotenv
