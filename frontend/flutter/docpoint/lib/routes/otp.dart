@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
-class MyRegister extends StatelessWidget {
-  const MyRegister({super.key});
+class Myotp extends StatelessWidget {
+  const Myotp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class MyRegister extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   // OTP label
-                  Text(
+                  const Text(
                     'OTP',
                     style: TextStyle(
                       fontSize: 28,
@@ -40,11 +40,10 @@ class MyRegister extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       // Handle OTP confirmation
-                      print("OTP confirmed");
                     },
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       radius: 40,
-                      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+                      backgroundColor: Color.fromARGB(255, 0, 0, 0),
                       child: Icon(
                         Icons.check,
                         color: Colors.white,
