@@ -11,7 +11,7 @@ SUPABASE_URL = "https://lynonbmmglvpivolqyrw.supabase.co"
 SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx5bm9uYm1tZ2x2cGl2b2xxeXJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzUzNTU3MTMsImV4cCI6MjA1MDkzMTcxM30.pYR2Aquu9zmWUSPUt5g5nXvoV1DD2Ba8L7Jh7P7XFWQ"  # Replace with your actual Supabase key
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
-@app.route('/save_user', methods=['POST', 'GET'])
+@app.route('/save_user', methods=['POST'])
 def save_user():
     try:
         # Parse JSON input
@@ -20,13 +20,12 @@ def save_user():
             return jsonify({'error': 'No input data provided'}), 400
 
         # Extract and validate input fields
-        name = data.get('name')
         mobile = data.get('mobile')
-        if not name or not mobile:
+        if not mobile:
             return jsonify({'error': 'Name and mobile are required'}), 400
 
         # Insert into Supabase
-        response = supabase.table('users').insert({'name': name, 'mobile': mobile}).execute()
+        response = supabase.table('otpauth').insert({'mobile': mobile}).execute()
 
         # Check if there was an error during insertion
         if response.get('status_code') and response['status_code'] != 200:
