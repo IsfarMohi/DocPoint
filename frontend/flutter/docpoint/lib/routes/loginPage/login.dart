@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../services/api_service.dart'; // Import ApiService
+import '../../services/api_service.dart'; // Import ApiService
 
 class MyLogin extends StatefulWidget {
   const MyLogin({super.key});
@@ -24,15 +24,7 @@ class _MyLoginState extends State<MyLogin> {
       return;
     }
 
-    bool success = await apiService.sendMobileNumber(mobileNumber);
-
-    if (success) {
-      // Show success dialog or navigate to the next screen
-      _showSuccessDialog();
-    } else {
-      // Show error dialog if API request failed
-      _showErrorDialog('Failed to send mobile number');
-    }
+    Navigator.pushNamed(context, 'otp'); // Replace with actual route name
   }
 
   void _showErrorDialog(String message) {
@@ -53,26 +45,26 @@ class _MyLoginState extends State<MyLogin> {
     );
   }
 
-  void _showSuccessDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        title: const Text('Success'),
-        content: const Text('Mobile number sent successfully!'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              // Navigate to the next screen, if needed
-              Navigator.pushNamed(
-                  context, 'nextScreen'); // Example screen navigation
-            },
-            child: const Text('OK'),
-          ),
-        ],
-      ),
-    );
-  }
+  // void _showSuccessDialog() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) => AlertDialog(
+  //       title: const Text('Success'),
+  //       content: const Text('Mobile number sent successfully!'),
+  //       actions: [
+  //         TextButton(
+  //           onPressed: () {
+  //             Navigator.of(context).pop();
+  //             // Navigate to the next screen, if needed
+  //             Navigator.pushNamed(
+  //                 context, 'nextScreen'); // Example screen navigation
+  //           },
+  //           child: const Text('OK'),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
