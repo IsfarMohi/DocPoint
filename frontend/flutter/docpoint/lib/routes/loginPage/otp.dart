@@ -1,61 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
-class Myotp extends StatelessWidget {
-  const Myotp({super.key});
+class MyOtp extends StatelessWidget {
+  const MyOtp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        body: Stack(
-          fit: StackFit.expand,
-          children: [
-            // Background image
-            Image.asset(
-              'assets/OTP.jpg',  // Make sure to add your background image in the assets folder
-              fit: BoxFit.cover,
-            ),
-            // Centered content
-            Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // OTP label
-                  const Text(
-                    'OTP',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          // Background image
+          Image.asset(
+            'assets/OTP.jpg', // Ensure the image is in assets folder
+            fit: BoxFit.cover,
+          ),
+          // Centered content
+          Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // OTP label
+                const Text(
+                  'Enter OTP',
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // OTP input field
+                const OTPInput(),
+                const SizedBox(height: 30),
+                // Confirm OTP button
+                CircleAvatar(
+                  radius: 40,
+                  backgroundColor: Colors.black,
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.check,
                       color: Colors.white,
+                      size: 30,
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  // OTP input
-                  const OTPInput(),
-                  const SizedBox(height: 30),
-                  // Confirm OTP button (circular)
-                  GestureDetector(
-                    onTap: () {
-                      // Handle OTP confirmation
+                    onPressed: () {
+                      // Navigate to the appointment page
+                      Navigator.pushNamed(context, 'home');
                     },
-                    child: const CircleAvatar(
-                      radius: 40,
-                      backgroundColor: Color.fromARGB(255, 0, 0, 0),
-                      child: Icon(
-                        Icons.check,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-                    ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
