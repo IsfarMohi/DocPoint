@@ -16,7 +16,7 @@ void main() {
     routes: {
       'otp': (context) => const MyOtp(),
       'login': (context) => const MyLogin(),
-      'appointment': (context) => AppointmentPage(),
+      'appointment': (context) => const AppointmentPage(),
       'reports': (context) => const HospitalReportsPage(),
       'home': (context) => const HospitalLandingPage(),
     },
