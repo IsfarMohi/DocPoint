@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../services/api_service.dart'; 
+
 
 class AppointmentPage extends StatefulWidget {
   const AppointmentPage({super.key});
@@ -42,6 +44,30 @@ class _AppointmentPageState extends State<AppointmentPage> {
     "Chatabazar": ["Oncology", "Radiology"],
     "Wadi Huda": ["Gynecology", "ENT", "General Surgery"],
   };
+
+   // Method to handle the booking process
+  Future<void> _bookAppointment() async {
+    if (selectedDateIndex != -1 && selectedTimeIndex != -1 && selectedBranch != null && selectedSpecialization != null) {
+
+      // Call your ApiService to create the appointment
+      bool success = await ApiService(baseUrl: 'http://192.168.0.10:5000').createAppointment(
+        branch: selectedBranch!,
+        specialization: selectedSpecialization!,
+        date: dates[selectedDateIndex],
+        time: times[selectedTimeIndex],
+      );
+
+      // Show success or failure message
+      if (success) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Appointment booked successfully!')));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to book appointment!')));
+      }
+    } else {
+      print("Missing selections");
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Please complete all selections.')));
+    }
+  }
 
   List<String> getSpecializations() {
     return selectedBranch != null
@@ -298,25 +324,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  if (selectedDateIndex != -1 &&
-                      selectedTimeIndex != -1 &&
-                      selectedBranch != null &&
-                      selectedSpecialization != null) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                            'Appointment booked at $selectedBranch for $selectedSpecialization on ${dates[selectedDateIndex]} at ${times[selectedTimeIndex]}'),
-                        backgroundColor: Colors.green,
-                      ),
-                    );
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Please complete all selections.'),
-                        backgroundColor: Colors.red,
-                      ),
-                    );
-                  }
+                   _bookAppointment();
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xff13a8b4),
