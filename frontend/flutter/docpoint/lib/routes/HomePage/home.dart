@@ -201,7 +201,7 @@ class HospitalLandingPage extends StatelessWidget {
             if (index == 1) {
               Navigator.pushNamed(context, 'appointment');
             } else if (index == 2) {
-              Navigator.pushNamed(context, 'reports');
+              Navigator.pushNamed(context, 'payment');
             } else {
               Navigator.pushNamed(context, 'home');
             }

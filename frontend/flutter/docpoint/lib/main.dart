@@ -4,10 +4,7 @@ import 'package:loginuicolors/routes/loginPage/otp.dart';
 import 'package:loginuicolors/routes/HomePage/AppointmentPage.dart';
 import 'package:loginuicolors/routes/ReportHistory/reports.dart';
 import 'package:loginuicolors/routes/HomePage/home.dart';
-
-
-
-
+import 'package:loginuicolors/routes/PaymentPage/payment.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -19,6 +16,9 @@ void main() {
       'appointment': (context) => const AppointmentPage(),
       'reports': (context) => const HospitalReportsPage(),
       'home': (context) => const HospitalLandingPage(),
+      'payment': (context) => const PaymentPage(),
+
+
     },
   ));
 }
