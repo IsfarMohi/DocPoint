@@ -16,106 +16,117 @@ class HospitalLandingPage extends StatelessWidget {
               // Hero Section
               Container(
                 height: 500,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/family.jpg'),
-              fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.3),
-                      BlendMode.darken,
-                    ),
-                  ),
-                ),
-                child: SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
-                  child: SafeArea(
-                    child: Center(
-            child: Container(
-                        padding: EdgeInsets.all(20),
-                        constraints: BoxConstraints(
-                          maxWidth: 600,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.9),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Text(
-                                "Best Multi Speciality Hospital in Tolichowki Hyderabad",
-                                style: TextStyle(
-                                  color: primaryColor, // Using primaryColor from base.dart
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
+                child: Stack(
+                  children: [
+                    // Background Image Layer
+                    Transform.rotate(
+                      angle: 3.14159, // 180 degrees in radians
+                      child: Container(
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/family.jpg'),
+                            fit: BoxFit.cover,
+                            colorFilter: ColorFilter.mode(
+                              Colors.black.withOpacity(0.3),
+                              BlendMode.darken,
                             ),
-                            SizedBox(height: 20),
-                            Text(
-                              "Your Health, Our\nPassion",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 42,
-                                fontWeight: FontWeight.bold,
-                                shadows: [
-                                  Shadow(
-                                    color: Colors.black.withOpacity(0.3),
-                                    offset: Offset(0, 2),
-                                    blurRadius: 4,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 20),
-                            Container(
-                              padding: EdgeInsets.all(16),
-                              decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.9),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Text(
-                                "Muslim General Hospital Tolichowki consists of a highly trained team of medical experts, "
-                                "advanced facilities, and unwavering commitment to the welfare of our patients.",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: primaryColor, // Using primaryColor from base.dart
-                                  fontSize: 16,
-                                  height: 1.5,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 30),
-                            ElevatedButton(
-                              onPressed: () {
-                                navigateToPage(context, 'appointment');
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: primaryColor, // Using primaryColor from base.dart
-                                foregroundColor: Colors.white,
-                                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                elevation: 4,
-                              ),
-                              child: Text(
-                                "Book An Appointment",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                    // Content Layer
+                    SingleChildScrollView(
+                      physics: BouncingScrollPhysics(),
+                      child: SafeArea(
+                        child: Center(
+                          child: Container(
+                            padding: EdgeInsets.all(20),
+                            constraints: BoxConstraints(
+                              maxWidth: 600,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.9),
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Text(
+                                    "Best Multi Speciality Hospital in Tolichowki Hyderabad",
+                                    style: TextStyle(
+                                      color: primaryColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                SizedBox(height: 20),
+                                Text(
+                                  "Your Health, Our\nPassion",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 42,
+                                    fontWeight: FontWeight.bold,
+                                    shadows: [
+                                      Shadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                        offset: Offset(0, 2),
+                                        blurRadius: 4,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: 20),
+                                Container(
+                                  padding: EdgeInsets.all(16),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.9),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Text(
+                                    "Muslim General Hospital Tolichowki consists of a highly trained team of medical experts, "
+                                    "advanced facilities, and unwavering commitment to the welfare of our patients.",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: primaryColor,
+                                      fontSize: 16,
+                                      height: 1.5,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 30),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    navigateToPage(context, 'appointment');
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: primaryColor,
+                                    foregroundColor: Colors.white,
+                                    padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                    elevation: 4,
+                                  ),
+                                  child: Text(
+                                    "Book An Appointment",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               
