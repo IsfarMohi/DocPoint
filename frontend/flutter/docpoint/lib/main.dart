@@ -7,9 +7,9 @@ import 'routes/HomePage/home.dart';
 import 'routes/PaymentPage/payment.dart';
 
 // Set this to true when debugging a specific page
-const bool debugMode = false;
+const bool debugMode = true;
 // Change this to the page you want to debug
-const String debugPage = 'appointment';
+const String debugPage = 'home';
 
 void main() {
   runApp(MaterialApp(
