@@ -2,14 +2,33 @@ import time
 import random
 import pyautogui
 import pywhatkit as kit
-from flask import Blueprint, request, jsonify
+from flask import Flask, request, jsonify
+from supabase import create_client, Client
+import os
+from dotenv import load_dotenv
 
-auth_blueprint = Blueprint("auth", __name__)  # Fixed naming issue
+
+load_dotenv()
+
+url = os.getenv('URL')
+key = os.getenv('KEY')
+
+
+
+supabase = create_client(url, key)
+
+
+
+#auth_blueprint = Blueprint("auth", __name__)  # Fixed naming issue
+app = Flask(__name__)
+
+print("Starting Flask app...")
+
 
 # Temporary storage for OTPs
 otp_storage = {}
 
-@auth_blueprint.route('/login', methods=['POST'])
+@app.route('/login', methods=['POST'])
 def login():
     try:
         data = request.get_json()
@@ -32,7 +51,7 @@ def login():
     except Exception as e:
         return jsonify({"error": "Failed to send message", "details": str(e)}), 500
 
-@auth_blueprint.route('/verify-otp', methods=['POST'])
+@app.route('/verify-otp', methods=['POST'])
 def verify_otp():
     try:
         data = request.get_json()
@@ -52,6 +71,8 @@ def verify_otp():
             return jsonify({"error": "OTP expired. Please request a new one."}), 400
 
         if int(user_otp) == stored_otp_data["otp"]:
+            response = supabase.table('users').insert({'phone': phone_number}).execute()
+            print("mobile added/updated successfully.")
             del otp_storage[phone_number]
             return jsonify({"message": "OTP verified successfully!"})
         else:
@@ -59,3 +80,7 @@ def verify_otp():
 
     except Exception as e:
         return jsonify({"error": "Verification failed", "details": str(e)}), 500
+    
+
+if __name__ == "__main__":
+    app.run(debug=True, host='0.0.0.0',port=5000)

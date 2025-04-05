@@ -25,7 +25,7 @@ class HospitalLandingPage extends StatelessWidget {
             elevation: 5,
             centerTitle: true,
             title: const Text(
-              "Hospital Care",
+              "Home",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -53,7 +53,7 @@ class HospitalLandingPage extends StatelessWidget {
           // Background Image
           Positioned.fill(
             child: Image.asset(
-              'assets/family.jpg', // Replace with your hospital image
+              'assets/family.jpg', // Background image for the whole page
               fit: BoxFit.cover,
             ),
           ),
@@ -64,8 +64,7 @@ class HospitalLandingPage extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Colors.teal.withOpacity(0.8),
-                    Colors.teal.withOpacity(0.3),
+                    const Color.fromARGB(255, 255, 255, 255).withOpacity(0.8),
                   ],
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
@@ -74,79 +73,94 @@ class HospitalLandingPage extends StatelessWidget {
             ),
           ),
 
-          // Content
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 40), // Adjust top padding
-
-                // Tagline
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: const Text(
-                    "Best Multi Speciality Hospital in Tolichowki Hyderabad",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
+          // Content Box (Top-aligned)
+          Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 60, left: 20, right: 20), // Adds space from top
+              child: Container(
+                width: double.infinity, // Full width
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.2), // Black background with transparency
+                  borderRadius: BorderRadius.circular(20), // Rounded corners
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF3B3232).withOpacity(0.5), // Shadow for depth
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
                     ),
-                  ),
+                  ],
                 ),
-
-                const SizedBox(height: 20),
-
-                // Main Title
-                const Text(
-                  "Your Health, Our\nPassion",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 91, 233, 255),
-                    fontSize: 42,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-
-                const SizedBox(height: 15),
-
-                // Description
-                const Text(
-                  "Muslim General Hospital Tolichowki consists of a highly trained team of medical experts, "
-                  "advanced facilities, and unwavering commitment to the welfare of our patients.",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    height: 1.5,
-                  ),
-                ),
-
-                const SizedBox(height: 30),
-
-                // Updated Button with Navigation to Appointment Page
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'appointment');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 18, 102, 120),
-                    foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 24, vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min, // Content takes needed space
+                  children: [
+                    // Tagline
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.2), // Lighter background for contrast
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: const Text(
+                        "Best Multi Speciality Hospital in Tolichowki Hyderabad",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
                     ),
-                  ),
-                  child: const Text(
-                    "Book An Appointment",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
+
+                    const SizedBox(height: 20),
+
+                    // Main Title
+                    const Text(
+                      "Your Health, Our\nPassion",
+                      style: TextStyle(
+                        color: Colors.tealAccent,
+                        fontSize: 42,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    const SizedBox(height: 15),
+
+                    // Description
+                    const Text(
+                      "Muslim General Hospital Tolichowki consists of a highly trained team of medical experts, "
+                      "advanced facilities, and unwavering commitment to the welfare of our patients.",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        height: 1.5,
+                      ),
+                    ),
+
+                    const SizedBox(height: 30),
+
+                    // Appointment Button
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'appointment');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.tealAccent,
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      child: const Text(
+                        "Book An Appointment",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ],
@@ -187,7 +201,7 @@ class HospitalLandingPage extends StatelessWidget {
             if (index == 1) {
               Navigator.pushNamed(context, 'appointment');
             } else if (index == 2) {
-              Navigator.pushNamed(context, 'reports');
+              Navigator.pushNamed(context, 'payment');
             } else {
               Navigator.pushNamed(context, 'home');
             }

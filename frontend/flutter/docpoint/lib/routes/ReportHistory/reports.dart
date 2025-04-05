@@ -1,32 +1,57 @@
 import 'package:flutter/material.dart';
 
-MaterialColor createMaterialColor(Color color) {
-  Map<int, Color> colorCodes = {
-    50: Color.alphaBlend(Colors.white.withOpacity(.9), color),
-    100: Color.alphaBlend(Colors.white.withOpacity(.8), color),
-    200: Color.alphaBlend(Colors.white.withOpacity(.6), color),
-    300: Color.alphaBlend(Colors.white.withOpacity(.4), color),
-    400: Color.alphaBlend(Colors.white.withOpacity(.2), color),
-    500: color,
-    600: Color.alphaBlend(Colors.black.withOpacity(.1), color),
-    700: Color.alphaBlend(Colors.black.withOpacity(.2), color),
-    800: Color.alphaBlend(Colors.black.withOpacity(.4), color),
-    900: Color.alphaBlend(Colors.black.withOpacity(.6), color),
-  };
-  return MaterialColor(color.value, colorCodes);
-}
+// Define theme colors for easy customization
+const Color primaryColor = Color.fromARGB(255, 9, 222, 255);
+const Color accentColor = Colors.teal;
+const Color completedStatusColor = Colors.green;
 
 class HospitalReportsPage extends StatelessWidget {
-  const HospitalReportsPage();
+  const HospitalReportsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Hospital Reports'),
-        backgroundColor: Theme.of(context).primaryColor,
-        centerTitle: true,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.teal,
+                Colors.tealAccent,
+              ],
+              begin: Alignment.centerLeft, // Left-to-right gradient
+              end: Alignment.centerRight,
+            ),
+          ),
+          child: AppBar(
+            backgroundColor: Colors.transparent, // Transparent for gradient
+            elevation: 5,
+            centerTitle: true,
+            title: const Text(
+              "Reports",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            leading: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset('assets/logo1.png'), // Replace with logo
+            ),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.menu, color: Colors.white),
+                onPressed: () {
+                  // Implement hamburger menu functionality
+                },
+              ),
+            ],
+          ),
+        ),
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -52,7 +77,7 @@ class HospitalReportsPage extends StatelessWidget {
                   label: const Text('All'),
                   selected: true,
                   onSelected: (bool value) {},
-                  selectedColor: Colors.teal,
+                  selectedColor: accentColor,
                   checkmarkColor: Colors.white,
                 ),
                 FilterChip(
@@ -97,8 +122,8 @@ class HospitalReportsPage extends StatelessWidget {
                           const SizedBox(height: 4),
                           Text(
                             'Status: Completed',
-                            style: const TextStyle(
-                              color: Colors.green,
+                            style: TextStyle(
+                              color: completedStatusColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -127,6 +152,48 @@ class HospitalReportsPage extends StatelessWidget {
           ],
         ),
       ),
+      // Gradient Bottom Navigation Bar
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.teal,
+              Colors.tealAccent,
+            ],
+            begin: Alignment.centerLeft, // Left-to-right gradient
+            end: Alignment.centerRight,
+          ),
+        ),
+        child: BottomNavigationBar(
+          backgroundColor: Colors.transparent, // Transparent for gradient
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white70,
+          elevation: 0,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_today),
+              label: 'Appointments',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.local_hospital), // Hospital-related icon
+              label: 'Reports',
+            ),
+          ],
+          onTap: (index) {
+            if (index == 1) {
+              Navigator.pushNamed(context, 'appointment');
+            } else if (index == 2) {
+              Navigator.pushNamed(context, 'reports');
+            } else {
+              Navigator.pushNamed(context, 'home');
+            }
+          },
+        ),
+      ),
     );
   }
 }
@@ -135,7 +202,7 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
-      primarySwatch: createMaterialColor(const Color.fromARGB(255, 9, 222, 255)), // Custom teal color
+      primaryColor: primaryColor,
       textTheme: const TextTheme(
         titleLarge: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         bodyMedium: TextStyle(fontSize: 14),
