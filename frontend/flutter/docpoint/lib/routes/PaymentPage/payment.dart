@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import '../base.dart';
 
 class PaymentPage extends StatefulWidget {
   const PaymentPage({Key? key}) : super(key: key);
@@ -110,51 +111,11 @@ class _PaymentPageState extends State<PaymentPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-            appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.teal,
-                Colors.tealAccent,
-              ],
-              begin: Alignment.centerLeft, // Left-to-right gradient
-              end: Alignment.centerRight,
-            ),
-          ),
-          child: AppBar(
-            backgroundColor: Colors.transparent, // Transparent for gradient
-            elevation: 5,
-            centerTitle: true,
-            title: const Text(
-              "Home",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            leading: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset('assets/logo1.png'), // Replace with logo
-            ),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.menu, color: Colors.white),
-                onPressed: () {
-                  // Implement hamburger menu functionality
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-      backgroundColor: Colors.grey[200], // Light gray background for a modern look
+    return BasePage(
+      title: "Payment",
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView(
+        child: Column(
           children: [
             // Appointment Summary
             const Text(
@@ -207,50 +168,19 @@ class _PaymentPageState extends State<PaymentPage> {
           ],
         ),
       ),
-            // Gradient Bottom Navigation Bar
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.teal,
-              Colors.tealAccent,
-            ],
-            begin: Alignment.centerLeft, // Left-to-right gradient
-            end: Alignment.centerRight,
-          ),
-        ),
-        child: BottomNavigationBar(
-          backgroundColor: Colors.transparent, // Transparent for gradient
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white70,
-          elevation: 0,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
-              label: 'Appointments',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.local_hospital), // Hospital-related icon
-              label: 'Reports',
-            ),
-          ],
-          onTap: (index) {
-            if (index == 1) {
-              Navigator.pushNamed(context, 'appointment');
-            } else if (index == 2) {
-              Navigator.pushNamed(context, 'reports');
-            } else {
-              Navigator.pushNamed(context, 'home');
-            }
-          },
-        ),
-      )
+      bottomNavItems: defaultBottomNavItems,
+      onBottomNavTap: (index) {
+        if (index == 1) {
+          navigateToPage(context, 'appointment');
+        } else if (index == 2) {
+          navigateToPage(context, 'reports');
+        } else {
+          navigateToPage(context, 'home');
+        }
+      },
     );
   }
+
   // Reusable function to create a card
   Widget buildInfoCard(List<Widget> children) {
     return Card(

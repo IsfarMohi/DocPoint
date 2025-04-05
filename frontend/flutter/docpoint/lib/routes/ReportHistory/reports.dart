@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../base.dart';
 
 // Define theme colors for easy customization
 const Color primaryColor = Color.fromARGB(255, 9, 222, 255);
@@ -10,48 +11,8 @@ class HospitalReportsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.teal,
-                Colors.tealAccent,
-              ],
-              begin: Alignment.centerLeft, // Left-to-right gradient
-              end: Alignment.centerRight,
-            ),
-          ),
-          child: AppBar(
-            backgroundColor: Colors.transparent, // Transparent for gradient
-            elevation: 5,
-            centerTitle: true,
-            title: const Text(
-              "Reports",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            leading: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset('assets/logo1.png'), // Replace with logo
-            ),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.menu, color: Colors.white),
-                onPressed: () {
-                  // Implement hamburger menu functionality
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-
+    return BasePage(
+      title: "Reports",
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -152,48 +113,16 @@ class HospitalReportsPage extends StatelessWidget {
           ],
         ),
       ),
-      // Gradient Bottom Navigation Bar
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.teal,
-              Colors.tealAccent,
-            ],
-            begin: Alignment.centerLeft, // Left-to-right gradient
-            end: Alignment.centerRight,
-          ),
-        ),
-        child: BottomNavigationBar(
-          backgroundColor: Colors.transparent, // Transparent for gradient
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white70,
-          elevation: 0,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
-              label: 'Appointments',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.local_hospital), // Hospital-related icon
-              label: 'Reports',
-            ),
-          ],
-          onTap: (index) {
-            if (index == 1) {
-              Navigator.pushNamed(context, 'appointment');
-            } else if (index == 2) {
-              Navigator.pushNamed(context, 'reports');
-            } else {
-              Navigator.pushNamed(context, 'home');
-            }
-          },
-        ),
-      ),
+      bottomNavItems: defaultBottomNavItems,
+      onBottomNavTap: (index) {
+        if (index == 1) {
+          navigateToPage(context, 'appointment');
+        } else if (index == 2) {
+          navigateToPage(context, 'reports');
+        } else {
+          navigateToPage(context, 'home');
+        }
+      },
     );
   }
 }

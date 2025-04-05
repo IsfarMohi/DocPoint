@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../services/api_service.dart'; // Import ApiService
+import '../base.dart';
 
 class MyLogin extends StatefulWidget {
   const MyLogin({super.key});
@@ -68,14 +69,14 @@ class _MyLoginState extends State<MyLogin> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/login1.jpg'), fit: BoxFit.cover),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
+    return BasePage(
+      title: "Login",
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/login1.jpg'), fit: BoxFit.cover),
+        ),
+        child: Stack(
           children: [
             SingleChildScrollView(
               child: Container(
