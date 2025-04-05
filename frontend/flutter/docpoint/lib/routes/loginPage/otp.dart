@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+import '../base.dart';
 
 class MyOtp extends StatelessWidget {
   const MyOtp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
+    return BasePage(
+      title: "OTP Verification",
       body: Stack(
         fit: StackFit.expand,
         children: [

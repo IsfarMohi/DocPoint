@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../services/api_service.dart'; 
-
+import '../../services/api_service.dart';
+import '../base.dart';
 
 class AppointmentPage extends StatefulWidget {
   const AppointmentPage({super.key});
@@ -77,49 +77,8 @@ class _AppointmentPageState extends State<AppointmentPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.teal,
-                Colors.tealAccent,
-              ],
-              begin: Alignment.centerLeft, // Left-to-right gradient
-              end: Alignment.centerRight,
-            ),
-          ),
-          child: AppBar(
-            backgroundColor: Colors.transparent, // Transparent for gradient
-            elevation: 5,
-            centerTitle: true,
-            title: const Text(
-              "Book Appointment",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            leading: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset('assets/logo1.png'), // Replace with logo
-            ),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.menu, color: Colors.white),
-                onPressed: () {
-                  // Implement hamburger menu functionality
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-
+    return BasePage(
+      title: "Book Appointment",
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -192,29 +151,20 @@ class _AppointmentPageState extends State<AppointmentPage> {
               items: getSpecializations().map((specialization) {
                 return DropdownMenuItem<String>(
                   value: specialization,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 12),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color:
-                          Colors.teal.withOpacity(0.1), // Light teal background
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.health_and_safety,
-                            color: Colors.teal, size: 20),
-                        const SizedBox(width: 10),
-                        Text(
-                          specialization,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black87,
-                          ),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.health_and_safety,
+                          color: Colors.teal, size: 20),
+                      const SizedBox(width: 10),
+                      Text(
+                        specialization,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black87,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 );
               }).toList(),
@@ -341,48 +291,16 @@ class _AppointmentPageState extends State<AppointmentPage> {
           ],
         ),
       ),
-      // Gradient Bottom Navigation Bar
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.teal,
-              Colors.tealAccent,
-            ],
-            begin: Alignment.centerLeft, // Left-to-right gradient
-            end: Alignment.centerRight,
-          ),
-        ),
-        child: BottomNavigationBar(
-          backgroundColor: Colors.transparent, // Transparent for gradient
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white70,
-          elevation: 0,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
-              label: 'Appointments',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.local_hospital), // Hospital-related icon
-              label: 'Reports',
-            ),
-          ],
-          onTap: (index) {
-            if (index == 1) {
-              Navigator.pushNamed(context, 'appointment');
-            } else if (index == 2) {
-              Navigator.pushNamed(context, 'reports');
-            } else {
-              Navigator.pushNamed(context, 'home');
-            }
-          },
-        ),
-      ),
+      bottomNavItems: defaultBottomNavItems,
+      onBottomNavTap: (index) {
+        if (index == 1) {
+          navigateToPage(context, 'appointment');
+        } else if (index == 2) {
+          navigateToPage(context, 'reports');
+        } else {
+          navigateToPage(context, 'home');
+        }
+      },
     );
   }
 }
