@@ -19,17 +19,14 @@ class HospitalLandingPage extends StatelessWidget {
                 child: Stack(
                   children: [
                     // Background Image Layer
-                    Transform.rotate(
-                      angle: 3.14159, // 180 degrees in radians
-                      child: Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/family.jpg'),
-                            fit: BoxFit.cover,
-                            colorFilter: ColorFilter.mode(
-                              Colors.black.withOpacity(0.3),
-                              BlendMode.darken,
-                            ),
+                    Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('assets/family.jpg'),
+                          fit: BoxFit.cover,
+                          colorFilter: ColorFilter.mode(
+                            Colors.black.withOpacity(0.3),
+                            BlendMode.darken,
                           ),
                         ),
                       ),
@@ -39,7 +36,7 @@ class HospitalLandingPage extends StatelessWidget {
                       physics: BouncingScrollPhysics(),
                       child: SafeArea(
                         child: Center(
-                          child: Container(
+            child: Container(
                             padding: EdgeInsets.all(20),
                             constraints: BoxConstraints(
                               maxWidth: 600,
@@ -83,7 +80,7 @@ class HospitalLandingPage extends StatelessWidget {
                                 SizedBox(height: 20),
                                 Container(
                                   padding: EdgeInsets.all(16),
-                                  decoration: BoxDecoration(
+              decoration: BoxDecoration(
                                     color: Colors.white.withOpacity(0.9),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -147,14 +144,14 @@ class HospitalLandingPage extends StatelessWidget {
                     SizedBox(height: 30),
                     Container(
                       padding: EdgeInsets.all(25),
-                      decoration: BoxDecoration(
+                decoration: BoxDecoration(
                         color: Colors.grey[50],
                         borderRadius: BorderRadius.circular(20),
-                        boxShadow: [
-                          BoxShadow(
+                  boxShadow: [
+                    BoxShadow(
                             color: Colors.grey.withOpacity(0.1),
                             spreadRadius: 1,
-                            blurRadius: 10,
+                      blurRadius: 10,
                             offset: Offset(0, 2),
                           ),
                         ],
@@ -521,7 +518,7 @@ class HospitalLandingPage extends StatelessWidget {
               // Latest News Section
               Container(
                 padding: EdgeInsets.symmetric(vertical: 60, horizontal: 20),
-                color: Colors.white,
+                        color: Colors.white,
                 child: Column(
                   children: [
                     Text(
@@ -769,9 +766,9 @@ class HospitalLandingPage extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
-              ),
-            ],
+            ),
+          ),
+        ],
           ),
         ),
       ),
